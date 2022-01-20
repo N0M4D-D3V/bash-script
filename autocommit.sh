@@ -54,7 +54,7 @@ git add .
 git commit -m "$commitMessage"
 git pull origin master
 
-if [ $currentBranch != 'master']
+if [ "$currentBranch" != "master"];
 then
     git push origin $currentBranch
 fi

@@ -53,7 +53,13 @@ git status
 git add .
 git commit -m "$commitMessage"
 git pull origin master
-git push origin $currentBranch
+
+test=$currentBranch
+if [ $test != "master" ]
+then
+    echo "i am in master"
+    git push origin $currentBranch
+fi
 
 echo -e "$OPEN_COLOR"
 figlet -f letter "UPD4T3D =)"

@@ -8,6 +8,7 @@ CLOSE_COLOR='\e[0m'
 interfacesPath=./src/shared
 
 currentBranch=`git branch --show-current`
+currentBranchName=$currentBranch
 
 echo -e "\n$OPEN_COLOR"
 figlet -f letter "4UT0C0MM1T"
@@ -54,10 +55,8 @@ git add .
 git commit -m "$commitMessage"
 git pull origin master
 
-test=$currentBranch
-if [ $test != "master" ]
+if [ $currentBranchName != "master" ]
 then
-    echo "i am in master"
     git push origin $currentBranch
 fi
 

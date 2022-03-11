@@ -1,5 +1,5 @@
 #!/bin/bash
-#Coded by: +.N0M4D.+
+#Coded by +.N0M4D.+
 
 option=$1
 commitMessage=${2:-"<> autocommit.sh <>"}
@@ -63,7 +63,7 @@ then
 fi
 
 _print_title "4UT0C0MM1T"
-_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.0 <>---<>"
+_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.1 <>---<>"
 
 # updates shared repositories if $updateShared contains "shared" substring.
 if [[ "$option" =~ "shared" ]]
@@ -88,7 +88,7 @@ then
 	
 fi
 
-#Updates current main branch from master unless $updateShared == "only-shared"
+#Updates current main branch from master unless $updateShared == "onlyshared"
 if [ "$option" != "onlyshared" ]
 then
     #Updates current branch from master

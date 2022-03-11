@@ -47,8 +47,6 @@ function _print_help () {
     echo '      < help: shows help'
     echo ''
     echo '   - Message: adds custom message to all commits'
-    exit 0
-
 }
 
 function _return_dir () {
@@ -64,7 +62,9 @@ _print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.0 <>---<>"
 if [[ "$options" =~ "help" ]]
 then
     _print_help
+    exit 0
 fi
+
 # updates shared repositories if $updateShared contains "shared" substring.
 if [[ "$option" =~ "shared" ]]
 then

@@ -35,11 +35,11 @@ function _print_with_color () {
 }
 
 function _print_help () {
-    _print_with_color '<> USE <>'
+    echo '<> USE <>'
     echo '   autocommit.sh [option] [message]'
     echo '   examples:'
     echo -e "      > autocommit.sh\n      < autocommit.sh none 'initial commit'\n      > autocommit.sh onlyshared 'shared commit'\n"
-    _print_with_color '<> PARAMS <>'
+    echo '<> PARAMS <>'
     echo '   - Options'
     echo '      > none: pull/push only in current branch.'
     echo '      < shared: pull/push in current branch and shared repos.'

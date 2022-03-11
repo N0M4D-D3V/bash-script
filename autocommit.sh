@@ -35,11 +35,11 @@ function _print_with_color () {
 }
 
 function _print_help () {
-    echo '<> USE <>'
+    _print_with_color '<> USE <>' 0.5
     echo '   autocommit.sh [option] [message]'
     echo '   examples:'
     echo -e "      > autocommit.sh\n      < autocommit.sh none 'initial commit'\n      > autocommit.sh onlyshared 'shared commit'\n"
-    echo '<> PARAMS <>'
+    _print_with_color '<> PARAMS <>' 0.5
     echo '   - Options'
     echo '      > none: pull/push only in current branch.'
     echo '      < shared: pull/push in current branch and shared repos.'
@@ -55,15 +55,15 @@ function _return_dir () {
     done
 }
 
-_print_title "4UT0C0MM1T"
-_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.0 <>---<>"
-
 # shows help
-if [[ "$options" =~ "help" ]]
+if [[ "$option" =~ "help" ]]
 then
     _print_help
     exit 0
 fi
+
+_print_title "4UT0C0MM1T"
+_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.0 <>---<>"
 
 # updates shared repositories if $updateShared contains "shared" substring.
 if [[ "$option" =~ "shared" ]]

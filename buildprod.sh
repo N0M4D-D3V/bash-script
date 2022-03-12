@@ -1,4 +1,5 @@
 #!/bin/bash
+#Coded by N0M4D:
 
 OPN_COLOR='\e[1;35m'
 CLS_COLOR='\e[0m'

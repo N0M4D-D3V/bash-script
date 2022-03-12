@@ -1,6 +1,6 @@
 #!/bin/bash
 #Coded by +.N0M4D.+
-#Type autocommit.sh help 4 help >:v
+#Type 'autocommit.sh help' 4 help >:v
 
 option=$1
 commitMessage=${2:-"<> autocommit.sh <>"}
@@ -56,7 +56,7 @@ function _return_dir () {
     done
 }
 
-# shows help
+# shows help and exit
 if [[ "$option" =~ "help" ]]
 then
     _print_help

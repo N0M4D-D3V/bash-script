@@ -11,6 +11,8 @@ function _print_title () {
 }
 
 _print_title "M41nt3n4nc3" 2
+echo '        <>---+---+---+---+>< v2.1 ><+---+---+---+---<>'
+echo -e "\n"
 
 sudo apt-get update
 sudo apt-get -y upgrade

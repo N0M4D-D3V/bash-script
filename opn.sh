@@ -1,4 +1,6 @@
 #!/bin/bash
+#Coded by N0M4D
+
 project=$1
 app=$2
 
@@ -13,9 +15,7 @@ echo -e "${OPEN_COLOR} <>---::---<> v1.1 <>---::---<>${CLOSE_COLOR}"
 if [ -n "$project" ]
 then
 	case "$project" in
-		"happy") bash opn_happy.sh $app;;
 		"excalibur") bash opn_excalibur.sh $app;;
-		"lugfy")  bash opn_lugfy.sh $app;;
 		"onyze")  bash opn_onyze.sh $app;;
 		"retro") bash opn_retro.sh;;
         "crypt0tr4dd3r") bash opn_crypt0tr4dd3r.sh;;

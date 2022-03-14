@@ -13,6 +13,7 @@ currentBranch=`git branch --show-current`
 currentBranchName=$currentBranch
 
 function _check_dependencies () {
+    echo 'holi'
     checkBin git || errorMessage "This tool requires GIT. Please, install it."
     checkBin figlet || errorMessage "This tool requires FIGLET. Please, install it."
     checkBin kepasa || errorMessage "kepasa no ecciste vro instalalo"

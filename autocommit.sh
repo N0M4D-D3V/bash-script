@@ -12,6 +12,12 @@ interfacesPath=./src/shared
 currentBranch=`git branch --show-current`
 currentBranchName=$currentBranch
 
+function _check_dependencies () {
+    checkBin git || errorMessage "This tool requires GIT. Please, install it."
+    checkBin figlet || errorMessage "This tool requires FIGLET. Please, install it."
+    checkBin kepasa || errorMessage "kepasa no ecciste vro instalalo"
+}
+
 function _git_update () {
     git status
     git add .
@@ -56,6 +62,7 @@ function _return_dir () {
     done
 }
 
+_check_dependencies
 # shows help and exit
 if [[ "$option" =~ "help" ]]
 then

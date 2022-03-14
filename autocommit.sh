@@ -13,10 +13,8 @@ currentBranch=`git branch --show-current`
 currentBranchName=$currentBranch
 
 function _check_dependencies () {
-    echo 'holi'
-    checkBin git || errorMessage "This tool requires GIT. Please, install it."
-    checkBin figlet || errorMessage "This tool requires FIGLET. Please, install it."
-    checkBin kepasa || errorMessage "kepasa no ecciste vro instalalo"
+    command -v git >/dev/null 2>&1 || { echo >&2 "GIT not installed. Aborting..."; exit 1; }
+    command -v figlet >/dev/null 2>&1 || { echo >&2 "FIGLET not installed. Aborting..."; exit 1; }
 }
 
 function _git_update () {

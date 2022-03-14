@@ -12,15 +12,19 @@ function _print_title(){
 }
 
 _print_title "BU1LDPR0D v1.4"
+if [[ -f "./autocommit.sh" ]]
+then
+    bash autocommit.sh shared "buildprod.sh script - beforelinter"
 
-bash autocommit.sh shared "buildprod.sh script - beforelinter"
+    _print_title "L1NT3R"
+    npm run prestart
 
-_print_title "L1NT3R"
-npm run prestart
+    bash autocommit.sh shared "buildprod.sh script - afterlinter"
 
-bash autocommit.sh shared "buildprod.sh script - afterlinter"
+    _print_title "BUILD:PROD"
+    npm run build:prod
 
-_print_title "BUILD:PROD"
-npm run build:prod
-
-_print_title "D0N3 =)"
+    _print_title "D0N3 =)"
+else
+    _print_title "autocommit.sh script not found! D:"
+fi

@@ -14,7 +14,7 @@ currentBranchName=$currentBranch
 
 function _check_dependencies () {
     command -v git >/dev/null 2>&1 || { echo >&2 "GIT not installed. Aborting..."; exit 1; }
-    #command -v figlet >/dev/null 2>&1 || { echo >&2 "FIGLET not installed. Aborting..."; exit 1; }
+    command -v figlet >/dev/null 2>&1 || { echo >&2 "FIGLET not installed. Aborting..."; exit 1; }
 }
 
 function _git_update () {
@@ -30,7 +30,7 @@ function _git_push () {
 
 function _print_title () {
     echo -e "$OPEN_COLOR"
-    figlet -f letter $1
+    figlet $1
     echo -e "$CLOSE_COLOR"
     sleep 0.5
 }

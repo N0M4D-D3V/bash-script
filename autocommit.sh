@@ -103,7 +103,7 @@ then
     _git_update
 
     #If current branch is not master, push
-    if [ $currentBranchName != "master" ] && [ $currentBranchName != "main" ] && [ $currentBranchName != "develop"];
+    if [ $currentBranchName != "master" ] && [ $currentBranchName != "main" ] && [ $currentBranchName != "develop" ] && [ $currentBranchName != "development" ];
     then
         git push origin $currentBranch
     fi

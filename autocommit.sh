@@ -70,7 +70,7 @@ then
 fi
 
 _print_title "4UT0C0MM1T"
-_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.1 <>---<>"
+_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v3.2 <>---<>"
 
 # updates shared repositories if $updateShared contains "shared" substring.
 if [[ "$option" =~ "shared" ]]

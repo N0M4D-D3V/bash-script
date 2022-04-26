@@ -11,6 +11,8 @@ interfacesPath=./src/shared
 
 currentBranch=`git branch --show-current`
 currentBranchName=$currentBranch
+masterBranchName='main'
+developBranchName='develop'
 
 function _check_dependencies () {
     command -v git >/dev/null 2>&1 || { echo >&2 "GIT not installed. Aborting..."; exit 1; }
@@ -21,11 +23,11 @@ function _git_update () {
     git status
     git add .
     git commit -m "$commitMessage"
-    git pull origin master
+    git pull origin $masterBranchName
 }
 
 function _git_push () {
-    git push origin master
+    git push origin $masterBranchName
 }
 
 function _print_title () {
@@ -103,7 +105,7 @@ then
     _git_update
 
     #If current branch is not master, push
-    if [ $currentBranchName != "master" ] && [ $currentBranchName != "main" ] && [ $currentBranchName != "develop" ] && [ $currentBranchName != "development" ];
+    if [ $currentBranchName != $masterBranchName ] && [ $currentBranchName != developBranchName ];
     then
         git push origin $currentBranch
     fi

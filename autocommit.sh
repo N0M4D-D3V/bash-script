@@ -6,6 +6,7 @@ commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2
 OPEN_COLOR='\033[1;35m'
 CLOSE_COLOR='\033[0m'
+SCRIPT_VERSION='v4.1'
 
 interfacesPath=./src/shared
 
@@ -75,7 +76,7 @@ then
 fi
 
 _print_title "4UT0C0MM1T"
-_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT v4.0 <>---<>"
+_print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT ${SCRIPT_VERSION} <>---<>"
 
 # updates shared repositories if $updateShared contains "shared" substring.
 if [[ "$option" =~ "shared" ]]

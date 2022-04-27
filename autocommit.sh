@@ -24,6 +24,7 @@ function _git_update () {
     git add .
     git commit -m "$commitMessage"
     git pull origin $masterBranchName
+    git pull origin $developBranchName
 }
 
 function _git_push () {

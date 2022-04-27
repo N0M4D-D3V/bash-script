@@ -2,8 +2,8 @@
 #Coded by +.N0M4D.+
 #Type 'autocommit.sh help' 4 help >:v
 
-option=$1
-commitMessage=${2:-"<> autocommit.sh <>"}
+commitMessage=${1:-"<> autocommit.sh <>"}
+option=$2
 OPEN_COLOR='\e[1;35m'
 CLOSE_COLOR='\e[0m'
 
@@ -45,9 +45,9 @@ function _print_with_color () {
 
 function _print_help () {
     _print_with_color '<> USE <>' 0.5
-    echo '   autocommit.sh [option] [message]'
+    echo '   autocommit.sh [message] [option]'
     echo '   examples:'
-    echo -e "      > autocommit.sh\n      < autocommit.sh none 'initial commit'\n      > autocommit.sh onlyshared 'shared commit'\n"
+    echo -e "      > autocommit.sh\n      < autocommit.sh 'initial commit' none\n      > autocommit.sh 'shared commit' onlyshared\n"
     _print_with_color '<> PARAMS <>' 0.5
     echo '   - Options'
     echo '      > none: pull/push only in current branch.'
@@ -56,6 +56,8 @@ function _print_help () {
     echo '      < help: shows help'
     echo ''
     echo '   - Message: adds custom message to all commits'
+    _print_with_color '<> CUSTOMIZATION <>'
+    echo 'You can change the master or development branch name by only changing the variables at the top of the script. You can change the directory of shared submodules too.'
 }
 
 function _return_dir () {

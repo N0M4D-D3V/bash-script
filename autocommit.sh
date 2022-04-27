@@ -4,8 +4,8 @@
 
 commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2
-OPEN_COLOR='\e[1;35m'
-CLOSE_COLOR='\e[0m'
+OPEN_COLOR='\033[1;35m'
+CLOSE_COLOR='\033[0m'
 
 interfacesPath=./src/shared
 

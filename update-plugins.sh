@@ -1,17 +1,10 @@
 #!/bin/bash
 
 declare -a plugin_names=(
-	"cordova-plugin-whitelist@^1.3.3"
-	"cordova-plugin-splashscreen@^5.0.2"
+	"cordova-plugin-splashscreen@^5.0.4"
 	"cordova-plugin-ionic-webview@^2.5.3"
-	"cordova-plugin-ionic-keyboard@^2.1.2"
-	"cordova-plugin-file-opener2@^2.0.19"
-	"cordova-plugin-device@2.0.2"
-	"cordova-plugin-email-composer@^0.8.15"
-	"cordova-plugin-statusbar@^2.4.2"
-	"cordova-plugin-advanced-http@^2.4.1"
+	"cordova-plugin-statusbar@^2.4.3"
 	"cordova-plugin-screen-orientation@^3.0.2"
-	"cordova-plugin-filechooser@^1.2.0"
 	"cordova-plugin-file@^6.0.1"
 	"cordova-sqlite-storage@^5.0.1"
 )

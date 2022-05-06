@@ -6,7 +6,7 @@ commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2
 OPEN_COLOR='\033[1;35m'
 CLOSE_COLOR='\033[0m'
-SCRIPT_VERSION='v4.3'
+SCRIPT_VERSION='v4.4'
 
 interfacesPath=./src/shared
 

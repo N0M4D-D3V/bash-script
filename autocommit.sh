@@ -58,7 +58,7 @@ function _print_help () {
     echo ''
     echo -e "   - Message: adds custom message to all commits\n"
     _print_with_color '<> CUSTOMIZATION <>' 0.5
-    echo '   You can change the master or development branch name by only changing the variables at the top of the script. You can change the directory of shared submodules too.'
+    echo '   You can change the master/devel branch name by only changing the variables at the top of the script. You can change the shared submodules directory too.'
     echo '   Pushing to master/develop branch is blocked.'
     echo -e "\nWARNING: < git add . > command will be executed at runtime! Take care of it..."
 }
@@ -92,7 +92,7 @@ function _update_shared(){
 #######################################
 
 _check_dependencies
-if [[ "$option" =~ "help" ]]
+if [[ "$option" =~ "help" ]] || [[ "$message" =~ "help" ]];
 then
     _print_help
     exit 0

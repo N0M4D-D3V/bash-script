@@ -92,7 +92,7 @@ function _update_shared(){
 #######################################
 
 _check_dependencies
-if [ "$option" =~ "help" ] || [ "$message" =~ "help" ];
+if [[ "$option" =~ "help" ]] | [[ "$commitMessage" =~ "help" ]];
 then
     _print_help
     exit 0

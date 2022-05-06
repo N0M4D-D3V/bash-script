@@ -6,7 +6,7 @@ commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2
 OPEN_COLOR='\033[1;35m'
 CLOSE_COLOR='\033[0m'
-SCRIPT_VERSION='v4.1'
+SCRIPT_VERSION='v4.2'
 
 interfacesPath=./src/shared
 
@@ -67,9 +67,29 @@ function _return_dir () {
     done
 }
 
-_check_dependencies
+function _update_shared(){
+    _print_with_color "<>---<> UPDATING SHARED <>---<>"
+	cd ./src/shared
+	
+    #updates shared/interfaces
+	cd ./interfaces
+	_git_update
+    _git_push
+    _return_dir
+	
+    #updates shared/services
+	cd ./services
+	_git_update
+    _git_push
+	_print_with_color "\n<> INTERFACES & SERVICES UDATED <>" 2
+    _return_dir 3
+}
 
-# shows help and exit
+#######################################
+############## 3X3KUT10N ##############
+#######################################
+
+_check_dependencies
 if [[ "$option" =~ "help" ]]
 then
     _print_help
@@ -79,37 +99,19 @@ fi
 _print_title "4UT0C0MM1T"
 _print_with_color "<>---<> INITIALIZING AUTOCOMMIT BASH SCRIPT ${SCRIPT_VERSION} <>---<>"
 
-# updates shared repositories if $updateShared contains "shared" substring.
+# updates shared repositories if $option contains "shared" substring.
 if [[ "$option" =~ "shared" ]]
 then
-    _print_with_color "<>---<> UPDATING SHARED <>---<>"
-	cd ./src/shared
-	
-    #updates shared/interfaces
-	_print_with_color "\nUpdating interfaces..."
-	cd ./interfaces
-	_git_update
-    _git_push
-    _return_dir
-	
-    #updats shared/services
-	_print_with_color "\nUpdating services..."
-	cd ./services
-	_git_update
-    _git_push
-	_print_with_color "\n<> INTERFACES & SERVICES UDATED <>" 2
-    _return_dir 3
-	
+    _update_shared
 fi
 
-#Updates current main branch from master unless $updateShared == "onlyshared"
+#Updates current branch from master && develop unless $option == "onlyshared"
 if [ "$option" != "onlyshared" ]
 then
-    #Updates current branch from master
     _print_with_color "<> UPDATING MAIN PROJECT <>"
     _git_update
 
-    #If current branch is not master, push
+    #If current branch is not master or develop, push
     if [ $currentBranchName != $masterBranchName ] && [ $currentBranchName != developBranchName ];
     then
         git push origin $currentBranch

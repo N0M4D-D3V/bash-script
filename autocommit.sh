@@ -56,11 +56,11 @@ function _print_help () {
     echo '      > onlyshared: pull/push only in shared repos.'
     echo '      < help: shows help'
     echo ''
-    echo '   - Message: adds custom message to all commits'
-    _print_with_color '<> CUSTOMIZATION <>'
-    echo 'You can change the master or development branch name by only changing the variables at the top of the script. You can change the directory of shared submodules too.'
-    echo 'Pushing to master/develop branch is blocked.'
-    echo 'WARNING: < git add . > command will be executed at runtime! Take care of it...'
+    echo -e "   - Message: adds custom message to all commits\n"
+    _print_with_color '<> CUSTOMIZATION <>' 0.5
+    echo '   You can change the master or development branch name by only changing the variables at the top of the script. You can change the directory of shared submodules too.'
+    echo '   Pushing to master/develop branch is blocked.'
+    echo -e "\nWARNING: < git add . > command will be executed at runtime! Take care of it..."
 }
 
 function _return_dir () {

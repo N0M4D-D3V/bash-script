@@ -17,7 +17,7 @@ developBranchName='develop'
 
 function _check_dependencies () {
     command -v git >/dev/null 2>&1 || { echo >&2 "GIT not installed. Aborting..."; exit 1; }
-    command -v figlet >/dev/null 2>&1 || { echo >&2 "FIGLET not installed. Aborting..."; exit 1; }
+    command -v figlet >/dev/null 2>&1 || { echo >&2 "FIGLET not installed. You should install 4 better experience!";}
 }
 
 function _git_update () {
@@ -68,6 +68,7 @@ function _return_dir () {
 }
 
 _check_dependencies
+
 # shows help and exit
 if [[ "$option" =~ "help" ]]
 then

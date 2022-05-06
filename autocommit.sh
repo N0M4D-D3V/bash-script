@@ -6,7 +6,7 @@ commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2
 OPEN_COLOR='\033[1;35m'
 CLOSE_COLOR='\033[0m'
-SCRIPT_VERSION='v4.2'
+SCRIPT_VERSION='v4.3'
 
 interfacesPath=./src/shared
 
@@ -59,6 +59,8 @@ function _print_help () {
     echo '   - Message: adds custom message to all commits'
     _print_with_color '<> CUSTOMIZATION <>'
     echo 'You can change the master or development branch name by only changing the variables at the top of the script. You can change the directory of shared submodules too.'
+    echo 'Pushing to master/develop branch is blocked.'
+    echo 'WARNING: < git add . > command will be executed at runtime! Take care of it...'
 }
 
 function _return_dir () {

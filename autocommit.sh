@@ -1,6 +1,5 @@
 #!/bin/bash
-#Coded by +.N0M4D.+
-#Type 'autocommit.sh help' 4 help >:v
+#Type 'autocommit.sh help' 4 help >:v --- +.N0M4D.+
 
 commitMessage=${1:-"<> autocommit.sh <>"}
 option=$2

@@ -1,6 +1,16 @@
 #!/bin/bash
-# buildprod.sh [params] 
-#Coded by N0M4D
+# open-project.sh [params]
+#
+# <> Coded by N0M4D <>
+# 
+#
+# For a better use of the script, follow these steps:
+#	> Grant execution permissions to the script using the command 'chmod +x ~/path-to-script/open-project.sh'
+#       > Add the folder where you store your scripts to the path by including 'export PATH="path-to-scripts:$PATH"' in your .zshrc file
+#	> Include the following alias in your .zshrc file: open(){ . open-project.sh $@ } and refresh your terminal
+#       > Use as 'open project1 project2 project3 ...' command.
+
+
 
 base_dir="$HOME/Documents/Projects"
 

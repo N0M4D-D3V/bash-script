@@ -30,7 +30,7 @@ do
 	# check if directory was found
 	if [ -n "$dir_path" ];then
 		# open the directory
-		echo "Starting '$dir_to_open' ..."
+		echo "Starting '$dir_path' ..."
 		code "$dir_path"
 	else
 		echo "Directory '$dir_to_open' not found at '$base_dir'."

@@ -1,5 +1,5 @@
 #!/bin/bash
-# <>-< 2.0.0 >-<>
+# <>-< 2.1.0 >-<>
 # <>-< N0M4D >-<>
 #
 # For a better use of the script, follow these steps:

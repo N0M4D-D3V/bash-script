@@ -20,13 +20,15 @@ base_dir="$HOME/Documents/projects"
 # If no param is provided, list main folders in the base directory
 if [ $# -eq 0 ]; then
 	echo "Listing available directories ..."
-  ls -d "$base_dir"/*/
+  ls -d "$base_dir"/*/ | while read -r dir; do
+  	echo "$(basename "$dir")"
+  done
 fi
 
 # If a number is passed as a parameter, list directories up to that level
 if [ $# -eq 1 ] && [ $1 -eq $1 2>/dev/null ]; then
   max_depth=$1
-  find "$base_dir" -maxdepth $max_depth -type d -print
+  find "$base_dir" -maxdepth $max_depth -type d -exec basename {} \;
 else
 
   # iterate all the provided params

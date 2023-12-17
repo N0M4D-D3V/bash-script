@@ -4,17 +4,30 @@ import time
 
 _key: str = 'esc'
 _sleep_time: int = 60
+_cycle: int = 0
+
+# print header
+def print_header():
+    print('<>---> XCAPE SCRIPT <---<>')
+    print(' > Running ...')
+    print('')
 
 # simulate Escape press
 def press_escape():
-  print('Pressing configured key ...')
-  print(_key)
   keyboard.press_and_release(_key)
 
+#manage cycle
+def manage_cycle():
+    _cycle=cycle+1
+    print('    > cycle: ', _cycle)
+
 # loop execution
+print_header()
 try:
   while True:
-    press_escape()
     time.sleep(_sleep_time)
+    press_escape()
+    manage_cycle()
+    
 except KeyboardInterrupt:
   pass

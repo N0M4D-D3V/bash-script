@@ -1,4 +1,10 @@
-# pip install keyboard
+# <>---< XCAPE SCRIPT >---<>
+# >< version 1.0.0 || Coded by N0M4D ><
+#
+# > REQUIREMENTS
+#    > python +3
+#    > pip install keyboard
+
 import keyboard
 import time
 

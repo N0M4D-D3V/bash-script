@@ -12,7 +12,6 @@ _key: str = 'esc'
 _sleep_time: int = 60
 _cycle: int = 0
 
-# print header
 def print_header():
     print('<>---> XCAPE SCRIPT <---<>')
     print(' > Running ...')
@@ -24,7 +23,7 @@ def press_escape():
 
 #manage cycle
 def manage_cycle():
-    _cycle=cycle+1
+    _cycle=_cycle+1
     print('    > cycle: ', _cycle)
 
 # loop execution

@@ -21,18 +21,15 @@ def print_header():
 def press_escape():
   keyboard.press_and_release(_key)
 
-#manage cycle
-def manage_cycle():
-    _cycle=_cycle+1
-    print('    > cycle: ', _cycle)
-
 # loop execution
 print_header()
 try:
   while True:
     time.sleep(_sleep_time)
     press_escape()
-    manage_cycle()
+
+    _cycle=_cycle+1
+    print('    > cycle: ', _cycle)
     
 except KeyboardInterrupt:
   pass

@@ -40,4 +40,4 @@ sudo apt-get update
 echo '<!> Installing docker latest version ...'
 echo ''
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y

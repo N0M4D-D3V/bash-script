@@ -14,7 +14,7 @@ wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo apt-get install --assume-yes ./chrome-remote-desktop_current_amd64.deb
 
 sudo apt install slim -y
-sudo apt install ubuntu-desktop -y
+sudo apt install ubuntu-desktop-minimal -y
 
 sudo reboot
 

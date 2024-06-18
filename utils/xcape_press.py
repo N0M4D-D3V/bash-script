@@ -1,12 +1,14 @@
 # <>---< XCAPE SCRIPT >---<>
-# >< version 1.0.0 || Coded by N0M4D ><
+# >< version 2.0.0 || Coded by N0M4D ><
 #
 # > REQUIREMENTS
 #    > python +3
 #    > pip install keyboard
-
+import sys
 import keyboard
 import time
+
+_cycles: int = 0
 
 _key: str = 'esc'
 _sleep_time: int = 60
@@ -24,12 +26,26 @@ def press_escape():
 # loop execution
 print_header()
 try:
-  while True:
-    time.sleep(_sleep_time)
-    press_escape()
+  if len(sys.argv) > 1:
+      _cycles=int(sys.argv[1])
 
-    _cycle=_cycle+1
-    print('    > cycle: ', _cycle)
+  if cycles !=0 :
+      # defined loop
+      while _cycle < _cycles:
+          time.sleep(_sleep_time)
+          press_escape()
+
+          _cycle=_cycle+1
+          print('    > cycle: ', _cycle, '/', _cycles)
+
+  else:
+      # infinite loop
+      while True:
+        time.sleep(_sleep_time)
+        press_escape()
+    
+        _cycle=_cycle+1
+        print('    > cycle: ', _cycle)
     
 except KeyboardInterrupt:
   pass

@@ -1,0 +1,13 @@
+{
+    "name": "xcape",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "rise": "node xcape.js"
+    },
+    "keywords": [],
+    "author": "N0M4D",
+    "license": "ISC"
+  }
+  

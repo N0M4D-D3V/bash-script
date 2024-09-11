@@ -25,13 +25,16 @@ function pressEscapeKey() {
   exec(`${nircmdPath} sendkey esc press`, (error, stdout, stderr) => {
     if (error) {
       console.error(`<!> Error: ${error.message}`);
+      console.log('');
       return;
     }
     if (stderr) {
       console.error(`<!> Stderr: ${stderr}`);
+      console.log('');
       return;
     }
     console.info("<!> Escape key pressed successfully.");
+    console.info('');
   });
 }
 

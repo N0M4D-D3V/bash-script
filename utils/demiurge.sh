@@ -1,80 +1,77 @@
 #!/bin/bash
-# <>-< 3.0.3 >-<>
+# <>-< 3.1.0 >-<>
 # <>-< N0M4D >-<>
 #
-# For better usage, follow these steps:
-#   > Grant execution permissions to the script using 'chmod +x ~/path-to-script/open-project.sh'
-#   > Add the folder where you store your scripts to the PATH by including 'export PATH="path-to-scripts:$PATH"' in your .zshrc file
-#   > Include the following alias in your .zshrc: open(){ . open-project.sh } and refresh your terminal
-#   > Use the 'open' command to run the script without any parameters.
+# To better use this script, follow these steps:
+#   > Give execution permissions using 'chmod +x ~/path-to-script/open-project.sh'
+#   > Add the folder where you store your scripts to the PATH with 'export PATH="path-to-scripts:$PATH"' in your .zshrc
+#   > Add the following alias in your .zshrc: open(){ . open-project.sh } and refresh your terminal
+#   > Use the command 'open' to run the script with or without parameters.
 #
-# Usage:
-#   > open -> Lists projects and asks the user to select which ones to open.
-#   > open project1 project2 -> Opens the specified projects directly.
+# Usage
+#   > open -> Lists the projects and asks the user which one(s) to open.
+#   > open project1 project2 ... -> Opens the specified projects directly.
 #
 
 base_dir="$HOME/Documents/projects"
 
-echo '<>---> PROJECT OPENER SCRIPT <---<>' 
+# Color codes
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo -e "${GREEN}<>---< D3M1URG3 >---<>${NC}"
 echo ''
 
-# Function to open projects by name
-open_projects_by_name() {
-    for project_name in "$@"; do
-        # Search for the project directory
-        dir_path=$(find "$base_dir" -maxdepth 1 -type d -name "$project_name" -print -quit)
-        
+# If parameters are passed, open the specified projects directly
+if [ $# -gt 0 ]; then
+    for dir_to_open in "$@"; do
+        echo -e " > Searching for '$dir_to_open' ..."
+
+        dir_path=$(find "$base_dir" -type d -name "$dir_to_open" -print -quit)
+
         if [ -n "$dir_path" ]; then
-            echo " > Opening '$dir_path' ..."
+            echo -e " > Opening '$dir_path' ..."
             code "$dir_path"
         else
-            echo " <!> Project '$project_name' not found in '$base_dir' <!>"
+            echo -e "${RED} <!> Directory '$dir_to_open' not found in '$base_dir' <!>${NC}"
         fi
     done
-}
 
-# If parameters are passed, try to open the specified projects
-if [ $# -gt 0 ]; then
-    echo " > Opening specified projects..."
-    open_projects_by_name "$@"
-
-# If no parameters are passed, list directories and ask for user input
+# If no parameters are provided, list the directories in base_dir and ask the user to choose
 else
+
     echo " > Listing available directories:"
     echo ''
 
     projects=()
     index=1
 
-    # Store the directories in an array, excluding the base directory itself, and show them with an index
+    # Store directories in an array and display them with an index
     while IFS= read -r -d '' dir; do
         dir_name=$(basename "$dir")
-        
-        # Exclude the root directory (projects) from the list
-        if [ "$dir_name" != "$(basename "$base_dir")" ]; then
-            projects+=("$dir")
-            echo "    [$index] $dir_name"
-            index=$((index+1))
-        fi
-    done < <(find "$base_dir" -mindepth 1 -maxdepth 1 -type d -print0)
+        projects+=("$dir")
+        echo "    [$index] $dir_name"
+        index=$((index+1))
+    done < <(find "$base_dir" -maxdepth 1 -type d -print0)
 
     # Ask the user which projects to open
     echo ''
-    echo -n " > Enter the number(s) of the project(s) to open (separated by commas for multiple): "
+    echo -n -e "${GREEN} > Enter the number of the project(s) to open (comma-separated): ${NC}"
     read input
 
-    # Split the input by commas and remove any extra spaces
+    # Split input by commas and trim spaces
     IFS=',' read -rA indices <<< "$input"
 
-    # Iterate over the indices provided by the user
+    # Iterate over the provided indices and open the corresponding projects
     for i in "${indices[@]}"; do
-        i=$(echo "$i" | xargs)  # Remove whitespace
+        i=$(echo "$i" | xargs)  # Remove leading/trailing spaces
         if [[ "$i" =~ ^[0-9]+$ ]] && [ "$i" -ge 1 ] && [ "$i" -le "${#projects[@]}" ]; then
-            project_dir="${projects[$((i-1))]}"
+            project_dir="${projects[$((i))]}"
             echo " > Opening '$project_dir' ..."
             code "$project_dir"
         else
-            echo " <!> Index '$i' not valid. Out of range or incorrect input <!>"
+            echo -e "${RED} <!> Index '$i' not valid. Out of range or incorrect input <!>${NC}"
         fi
     done
 fi

@@ -1,5 +1,5 @@
 #!/bin/bash
-# <>-< 3.1.0 >-<>
+# <>-< 3.1.1 >-<>
 # <>-< N0M4D >-<>
 #
 # To better use this script, follow these steps:
@@ -45,7 +45,7 @@ else
     echo ''
 
     projects=()
-    index=1
+    index=0
 
     # Store directories in an array and display them with an index
     while IFS= read -r -d '' dir; do
@@ -61,7 +61,7 @@ else
     read input
 
     # Split input by commas and trim spaces
-    IFS=',' read -rA indices <<< "$input"
+    IFS=',' read -r -a indices <<< "$input"
 
     # Iterate over the provided indices and open the corresponding projects
     for i in "${indices[@]}"; do

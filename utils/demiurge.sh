@@ -50,7 +50,8 @@ detect_keys() {
       IFS= read -rsn1 key  # Read first character of the key press
     fi
 
-    if [[ -z "$key" ]]; then
+    if [[ "$key" == "" || "$key" == $'\n' ]]; then
+    #if [[ -z "$key" ]]; then
       is_selection_running=false
 
     elif [[ $key == $'\e' ]]; then
@@ -163,7 +164,7 @@ find_available_projects() {
 list_directories() {
     clear
     index=0
-
+    
     echo ''
     echo " > Listing available projects:"
     echo ''
@@ -196,7 +197,8 @@ openProjectsByIndex() {
         fi
 
         if [[ "$i" =~ ^[0-9]+$ ]] && [ "$i" -ge 0 ] && [ "$i" -le "${#projects[@]}" ]; then
-            project_dir="${projects[$((i))]}"
+            index=$((i+1))
+            project_dir="${projects[$index]}"
             echo " > Opening '$project_dir' ..."
             code "$project_dir"
         else

@@ -40,15 +40,28 @@ selected_project_indexes=()
 detect_keys() {
   while $is_selection_running; do
     list_directories
-    # Read a single key press
-    IFS= read -rsn1 key  # Read first character of the key press
     
+    # Determine if we are using Zsh or Bash, then set the appropriate `read` options
+    if [ -n "$ZSH_VERSION" ]; then
+      # Zsh: Use -k to read a single key
+      IFS= read -rs -k1 key  # Read first character of the key press
+    else
+      # Bash: Use -n1 to read a single key
+      IFS= read -rsn1 key  # Read first character of the key press
+    fi
+
     if [[ -z "$key" ]]; then
-        is_selection_running=false
+      is_selection_running=false
 
     elif [[ $key == $'\e' ]]; then
       # Detect if it's an escape sequence (arrow keys start with \e)
-      IFS= read -rsn2 -t 0.1 key  # Read the next two characters
+      if [ -n "$ZSH_VERSION" ]; then
+        # Zsh: Read the next two characters using -k
+        IFS= read -rs -k2 -t 0.1 key
+      else
+        # Bash: Read the next two characters using -n2
+        IFS= read -rsn2 -t 0.1 key
+      fi
       case "$key" in
         "[A") go_up;;
         "[B") go_down;;
